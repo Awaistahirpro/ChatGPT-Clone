@@ -108,3 +108,18 @@ p{
 .prev-chat-contain::-webkit-scrollbar-thumb:hover {
     background-color: #555;
 }
+
+@media screen and (max-width: 1000px){
+    .question-items{
+        width: 100%;
+        padding-left: 12px;
+        gap: 1.5rem;
+        justify-content: flex-start;
+    }
+    .answer-items{
+        width: 100%;
+        padding-left: 12px;
+        gap: 1.5rem;
+        justify-content: flex-start;
+    }
+}
