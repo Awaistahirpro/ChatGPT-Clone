@@ -1,0 +1,79 @@
+.input-components-container-second{
+    width: 65%;
+    height: 100%;
+    background-color: darkblue;
+}
+textarea{
+    width: 68%;
+    min-height: 30px;
+    max-height: 100px;
+    /* height: auto; */
+    background-color: #40414F;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 0.7rem;
+    border-radius: 6px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    color: white;
+}
+textarea::placeholder {
+    color: lightgray;
+  }
+textarea :hover{
+    cursor: text;
+}
+.send-btn{
+    width: 3rem;
+    height: 3rem;
+    background-color: #525151;
+    clip-path: circle();
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+}
+.send-btn:hover{
+    background-color: black;
+    cursor: pointer;
+}
+.send-btn i{
+    font-size: 1.3rem;
+    color: white;
+    transition: all 0.2s ease-in-out;;
+}
+.btns-container{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.mic-container{
+    background-color: rgb(224, 224, 224);
+    transition: all 0.2s ease-in-out;
+}
+.mic-container i{
+    color: red;
+    transition: all 0.2s ease-in-out;
+}
+
+
+textarea::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+}
+textarea::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+textarea::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+}
+textarea::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
