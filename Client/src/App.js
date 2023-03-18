@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import ChatNavbar from './Components/Chat Navigation/ChatNavbar';
 import LoginPage from './Components/Login Page/loginPage';
 import NewChat from './Components/New Chat Screen/NewChat';
@@ -12,6 +12,7 @@ function App () {
     <>
       <BrowserRouter>
         <Routes>
+          <Route exact path="/" element={ <Navigate to="/chat" /> } />
           <Route path="chat" element={ <PrevChat /> } />
         </Routes>
       </BrowserRouter>
