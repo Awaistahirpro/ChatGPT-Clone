@@ -13,14 +13,19 @@ const TypingEffect = ( { text } ) => {
       setDisplayHtml( html.slice( 0, index ) );
       setIndex( index + 1 );
     }, 20 );
+
     if ( index >= html.length ) {
-      window.scrollTo( {
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
+      const button = document.querySelector( '.prev-chat-contain' );
+      button.addEventListener( 'click', () => {
+        window.scrollTo( {
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+        } );
       } );
       setShowCursor( false );
       clearTimeout( timerId );
     }
+
     return () => clearTimeout( timerId );
   }, [ index, text ] );
 
