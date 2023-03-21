@@ -17,13 +17,7 @@ const openai = new OpenAIApi(configuration);
 router.post('/user_input_question', async (req, res) => {
     const response = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
-        messages: [{role: 'user', content: req.body.prompt + ''}]
-        // prompt: req.body.prompt + '\n Answer should be in html.',
-        // temperature: 0,
-        // max_tokens: 3000,
-        // top_p: 1,
-        // frequency_penalty: 0.5,
-        // presence_penalty: 0,
+        messages: [{role: 'user', content: req.body.prompt + '\n and style the response as much as possible.'}]
       });
     res.status(200).send({
         botResponse: response.data.choices[0].message.content,
