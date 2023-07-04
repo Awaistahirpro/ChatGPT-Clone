@@ -33,7 +33,7 @@ const InputSection = () => {
           updateMyData(dataObj1);
           const res = await sendingMessageToServer(question);
           if (res.status === 500) {
-            let dataObj2 = { id: generateUniqueId(), questionData: question, answerData: 'Server error occurred.' };
+            let dataObj2 = { id: generateUniqueId(), questionData: question, answerData: res.botResponse };
             updateMyData(dataObj2);
             sethandleLoader(null);
           } else {

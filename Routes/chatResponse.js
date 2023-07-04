@@ -25,7 +25,10 @@ router.post('/user_input_question', async (req, res) => {
             resQues: req.body.prompt
         });
     } catch (error) {
-        res.statusCode(500).send("Server error.")
+        res.status(500).send({
+            botResponse: 'Server error occured please check your API key.',
+            resQues: req.body.prompt
+        });
     }
     
 });
