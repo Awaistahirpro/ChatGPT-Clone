@@ -19,10 +19,18 @@ router.post('/user_input_question', async (req, res) => {
         model: "gpt-3.5-turbo",
         messages: [{role: 'user', content: req.body.prompt + '\n and style the response as much as possible.'}]
       });
-    res.status(200).send({
-        botResponse: response.data.choices[0].message.content,
-        resQues: req.body.prompt
-    });
+      if(response){
+          res.status(200).send({
+              botResponse: response.data.choices[0].message.content,
+              resQues: req.body.prompt
+          });
+      }
+      else{
+        res.status(200).send({
+            botResponse: 'Your OpenAI API Key is not working right now. Please fix it.',
+            resQues: req.body.prompt
+        });
+      }
 });
 
 
