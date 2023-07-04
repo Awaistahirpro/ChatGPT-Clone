@@ -15,14 +15,19 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 router.post('/user_input_question', async (req, res) => {
-    const response = await openai.createChatCompletion({
-        model: "gpt-3.5-turbo",
-        messages: [{role: 'user', content: req.body.prompt + '\n and style the response as much as possible.'}]
-      });
-    res.status(200).send({
-        botResponse: response.data.choices[0].message.content,
-        resQues: req.body.prompt
-    });
+    try {
+        const response = await openai.createChatCompletion({
+            model: "gpt-3.5-turbo",
+            messages: [{role: 'user', content: req.body.prompt + '\n and style the response as much as possible.'}]
+          });
+        res.status(200).send({
+            botResponse: response.data.choices[0].message.content,
+            resQues: req.body.prompt
+        });
+    } catch (error) {
+        res.statusCode(500).send("Server error.")
+    }
+    
 });
 
 

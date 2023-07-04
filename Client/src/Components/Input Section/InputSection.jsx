@@ -27,27 +27,24 @@ const InputSection = () => {
 
 
     const getResponseFromChatGPT = async () => {
-        if ( question !== '' ) {
-            sethandleLoader( '' );
-            let dataObj1 = { questionData: question, answerData: '' };
-            updateMyData( dataObj1 );
-            const res = await sendingMessageToServer( question );
-            const errorData = 'Your OpenAI API Key is not working right now.';
-            if(res.status === 500){
-                let dataObj2 = { id: generateUniqueId(), questionData: question, answerData: errorData };
-                updateMyData( dataObj2 );
-                sethandleLoader( null );
-            }
-            else{
-                let dataObj2 = { id: generateUniqueId(), questionData: question, answerData: res.botResponse };
-                updateMyData( dataObj2 );
-                sethandleLoader( null );
-            }
+        if (question !== '') {
+          sethandleLoader('');
+          let dataObj1 = { questionData: question, answerData: '' };
+          updateMyData(dataObj1);
+          const res = await sendingMessageToServer(question);
+          if (res.status === 500) {
+            let dataObj2 = { id: generateUniqueId(), questionData: question, answerData: 'Server error occurred.' };
+            updateMyData(dataObj2);
+            sethandleLoader(null);
+          } else {
+            let dataObj2 = { id: generateUniqueId(), questionData: question, answerData: res.botResponse };
+            updateMyData(dataObj2);
+            sethandleLoader(null);
+          }
+        } else {
+          alert('Question should not be empty.');
         }
-        else {
-            alert( 'Question should not be empty.' );
-        }
-    };
+      };
 
     const handleKeyDown = ( event ) => {
         if ( event.key === "Enter" ) {
