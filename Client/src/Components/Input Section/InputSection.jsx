@@ -32,7 +32,7 @@ const InputSection = () => {
             let dataObj1 = { questionData: question, answerData: '' };
             updateMyData( dataObj1 );
             const res = await sendingMessageToServer( question );
-            let dataObj2 = { id: generateUniqueId(), questionData: question, answerData: res.botResponse };
+            let dataObj2 = { id: generateUniqueId(), questionData: question, answerData: "Hello" };
             updateMyData( dataObj2 );
             sethandleLoader( null );
         }
