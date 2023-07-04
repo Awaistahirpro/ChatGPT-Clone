@@ -32,9 +32,17 @@ const InputSection = () => {
             let dataObj1 = { questionData: question, answerData: '' };
             updateMyData( dataObj1 );
             const res = await sendingMessageToServer( question );
-            let dataObj2 = { id: generateUniqueId(), questionData: question, answerData: res.botResponse };
-            updateMyData( dataObj2 );
-            sethandleLoader( null );
+            const errorData = 'Your OpenAI API Key is not working right now.';
+            if(res.status === 500){
+                let dataObj2 = { id: generateUniqueId(), questionData: question, answerData: errorData };
+                updateMyData( dataObj2 );
+                sethandleLoader( null );
+            }
+            else{
+                let dataObj2 = { id: generateUniqueId(), questionData: question, answerData: res.botResponse };
+                updateMyData( dataObj2 );
+                sethandleLoader( null );
+            }
         }
         else {
             alert( 'Question should not be empty.' );
